@@ -15,7 +15,7 @@ contract OutstandingOwls is ERC721, ERC721Burnable, ERC721Enumerable, ERC721URIS
 
     mapping(string => uint8) existingURIs;
 
-    address payable[] withdrawAddresses = [payable(0x31948632E8E8e575a5E3fcF94aa495057bb15008), payable(0x08756F75eeDE5789fA69bb153F27349FD0082ba0), payable(0xe339681FE408ffebE1B1207019FeA21491db0bDF),payable(0xD92AB1F520F1F858947964131B258341534bC28C), payable(0x1F094817A29374f093E4e5Db5e504237A7Bd0281)];
+    address payable[] withdrawAddresses = [payable(0x31948632E8E8e575a5E3fcF94aa495057bb15008), payable(0x08756F75eeDE5789fA69bb153F27349FD0082ba0), payable(0xe339681FE408ffebE1B1207019FeA21491db0bDF),payable(0xD92AB1F520F1F858947964131B258341534bC28C), payable(0x1F094817A29374f093E4e5Db5e504237A7Bd0281), payable(0x999A6422CfF2b8142Bf84C7E835abFE6D090Ed39)];
 
     constructor() ERC721("OutstandingOwls", "OSO") {}
 
@@ -37,7 +37,7 @@ contract OutstandingOwls is ERC721, ERC721Burnable, ERC721Enumerable, ERC721URIS
         string memory metadataURI
     ) public payable returns (uint256) {
         require(existingURIs[metadataURI] != 1, 'NFT already minted!');
-        require(msg.value >= 3 ether, 'Pay more money!');
+        require(msg.value >= 0.001 ether, 'Pay more money!');
         uint256 newItemId = _tokenIdCounter.current();
         _tokenIdCounter.increment();
         existingURIs[metadataURI] =1;
