@@ -37,7 +37,7 @@ contract OutstandingOwls is ERC721, ERC721Burnable, ERC721Enumerable, ERC721URIS
         string memory metadataURI
     ) public payable returns (uint256) {
         require(existingURIs[metadataURI] != 1, 'NFT already minted!');
-        require(msg.value >= 0.001 ether, 'Pay more money!');
+        require(msg.value >= 3 ether, 'Pay more money!');
         uint256 newItemId = _tokenIdCounter.current();
         _tokenIdCounter.increment();
         existingURIs[metadataURI] =1;

@@ -13,6 +13,9 @@ task("accounts", "Prints the list of accounts", async (taskArgs, hre) => {
 // You need to export an object to set up your config
 // Go to https://hardhat.org/config/ to learn more
 
+
+const POLYGON_PRIVATE_KEY = process.env.POLYGON_PRIVATE_KEY;
+
 /**
  * @type import('hardhat/config').HardhatUserConfig
  */
@@ -21,4 +24,10 @@ module.exports = {
   paths: {
     artifacts : './src/artifacts',
   },
+  networks: {
+    polygon: {
+      url: `https://polygon-mainnet.g.alchemy.com/v2/1vDEUZnf1mSeJll62xCcOj8B24Wq2Mij`,
+      accounts: [`${POLYGON_PRIVATE_KEY}`]
+    }
+  }
 };
